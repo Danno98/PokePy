@@ -23,7 +23,8 @@ Tener Python 3.7 o superior
 Navegamos a la carpeta del proyecto donde descomprimimos el archivo ZIP
 En la terminal ejecutamos: ProyectoPoke.py
 
-> [!PROBLEMAS COMUNES]
+> [!CAUTION]
+> PROBLEMAS COMUNES
 > "No se encuentra el archivo": Debemos asegurarnos de estar en la carpeta correcta y de que el archivo
 >      ProyectoPoke.py esta en la ubicacion.
 
