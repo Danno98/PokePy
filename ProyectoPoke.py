@@ -3,6 +3,31 @@ import random
 import time
 from pathlib import Path
 
+# Función para mostrar la barra de vida
+def mostrar_barra_vida(nombre, hp_actual, hp_maximo, longitud_barra=20):
+    # Calcula el porcentaje de HP restante
+    porcentaje_vida = (hp_actual / hp_maximo) * 100
+
+    # Calcula cuántos caracteres de la barra deben estar llenos
+    caracteres_llenos = int((hp_actual / hp_maximo) * longitud_barra)
+    barra = "█" * caracteres_llenos  # Caracteres llenos
+    barra += " " * (longitud_barra - caracteres_llenos)  # Caracteres vacíos
+
+    # Colorea la barra según el porcentaje de vida
+    if porcentaje_vida > 50:
+        color = "\033[92m"  # Verde
+    elif porcentaje_vida > 20:
+        color = "\033[93m"  # Amarillo
+    else:
+        color = "\033[91m"  # Rojo
+
+    # Restablece el color al final
+    reset_color = "\033[0m"
+
+    # Muestra la barra de vida
+    print(f"{nombre}: [{color}{barra}{reset_color}] {hp_actual}/{hp_maximo} HP")
+
+
 # Diccionario para el arte ASCII de los Pokémon
 ARTE_ASCII = {
     "Pikachu": r"""
@@ -18,8 +43,8 @@ ARTE_ASCII = {
             @    @     @@
              >   @    @
             @@@@@> @@
-                     @@@
-        """,
+                 @@@
+    """,
     "Charmander": r"""
                       @@--@@@-@@
                     @@          @@
@@ -223,29 +248,6 @@ class JuegoPokemon:
         print(ARTE_ASCII[enemy_pokemon_name])  # Mostrar arte ASCII
         return enemy_pokemon
 
-    def mostrar_barra_vida(nombre, hp_actual, hp_maximo, longitud_barra=20):
-    # Calcula el porcentaje de HP restante
-        porcentaje_vida = (hp_actual / hp_maximo) * 100
-    
-        # Calcula cuántos caracteres de la barra deben estar llenos
-        caracteres_llenos = int((hp_actual / hp_maximo) * longitud_barra)
-        barra = "█" * caracteres_llenos  # Caracteres llenos
-        barra += " " * (longitud_barra - caracteres_llenos)  # Caracteres vacíos
-    
-        # Colorea la barra según el porcentaje de vida
-        if porcentaje_vida > 50:
-            color = "\033[92m"  # Verde
-        elif porcentaje_vida > 20:
-            color = "\033[93m"  # Amarillo
-        else:
-            color = "\033[91m"  # Rojo
-    
-        # Restablece el color al final
-        reset_color = "\033[0m"
-    
-        # Muestra la barra de vida
-        print(f"{nombre}: [{color}{barra}{reset_color}] {hp_actual}/{hp_maximo} HP")
-
     #Es el método principal que controla el flujo del juego.
     def jugar(self):
         self.mostrar_logo()
@@ -254,8 +256,8 @@ class JuegoPokemon:
 
         while player_pokemon.hp > 0 and enemy_pokemon.hp > 0:
             print("\n--- Estado actual ---")
-            mostrar_barra_vida(player_pokemon.nombre, player_pokemon.hp, 100)
-            mostrar_barra_vida(enemy_pokemon.nombre, enemy_pokemon.hp, 100)
+            mostrar_barra_vida(player_pokemon.nombre, player_pokemon.hp, 100)  # Llamada a la función
+            mostrar_barra_vida(enemy_pokemon.nombre, enemy_pokemon.hp, 100)    # Llamada a la función
             print("--------------------")
 
             opcion = 0
