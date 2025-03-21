@@ -308,6 +308,11 @@ class JuegoPokemon:
                         self.pociones -= 1
                         player_pokemon.usar_pocion()
                         print(f"Te quedan {self.pociones} pociones.")
+                        # Mostrar la barra de vida actualizada después de usar la poción
+                        print("\n--- Estado actual ---")
+                        mostrar_barra_vida(player_pokemon.nombre, player_pokemon.hp, 100)
+                        mostrar_barra_vida(enemy_pokemon.nombre, enemy_pokemon.hp, 100)
+                        print("--------------------")
                 else:
                     print("No te quedan pociones!")
                     continue
@@ -333,3 +338,4 @@ class JuegoPokemon:
 if __name__ == "__main__":
     juego = JuegoPokemon()
     juego.jugar()
+
