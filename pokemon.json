@@ -1,0 +1,30 @@
+{
+    "Pikachu": {
+        "hp": 100,
+        "ataques": {
+            "Impactrueno": 20,
+            "Rayo": 30
+        }
+    },
+    "Charmander": {
+        "hp": 100,
+        "ataques": {
+            "Ascuas": 15,
+            "Lanzallamas": 35
+        }
+    },
+    "Bulbasaur": {
+        "hp": 100,
+        "ataques": {
+            "Hoja Afilada": 25,
+            "Latigazo": 20
+        }
+    },
+    "Squirtle": {
+        "hp": 100,
+        "ataques": {
+            "Pistola Agua": 20,
+            "Hidrobomba": 40
+        }
+    }
+}
